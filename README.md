@@ -64,129 +64,55 @@ After disabling the services mentioned above, we opened task manager to monitor 
 <img src="https://res.cloudinary.com/dbglnqdha/image/upload/ss18_yvwdwm.png" height="80%" width="80%" alt="GPO"/>
 <img src="https://res.cloudinary.com/dbglnqdha/image/upload/v1719342176/ss19_dl1dui.png" height="80%" width="80%" alt="GPO"/>
 <img src="https://res.cloudinary.com/dbglnqdha/image/upload/v1719342177/ss20_e5umda.png" height="80%" width="80%" alt="GPO"/>
-
-
-
- 
- Virtual network steps 3: Configured the virtual network ip address to 172.16.0.0/16 and added a subnet configured with an ip address range of 172.16.0.0/24 <br/>
-<img src="https://imgur.com/8Sovenm.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
- 
- Virtual network steps 4: Finalized and created the virtual network <br/>
-<img src="https://imgur.com/DLcZoM0.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
-<br />
-<br />
-Create Windows server 2019 data center Step 1: This windows server will act as our active directory domain controller <br/>
-<img src="https://imgur.com/IPP2fgo.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
-
-Create Windows server 2019 data center Step 2: <br/>
-<img src="https://imgur.com/8EnnxBc.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
-
-Create Windows server 2019 data center Step 3: This server will share the same subnet preconfigured in the Virtual network setup. <br/>
-<img src="https://imgur.com/TosE67h.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
-
-Create Windows server 2019 data center Step 4: It is important to note that the first 3 IPs in azure is always reserved. <br/>
-<img src="https://imgur.com/tNLfe21.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
-
-Windows server 2019 data center: Server overview <br/>
-<img src="https://imgur.com/T5X2j86.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
-
-After setting up the virtual network and the windows server, we would proceed to login to the windows server via the public ip address (172.178.112.148) using a windows remote desktop protocol to further configure the Active Directory Domain server and then setting up a windows 10 virtual machine to add to the active directory.
-To configure Active directory, we need Ip address and DNS server of the windows server to be static and the same. If we login to the server, this would not be the same as shown below <br/>
-
-<img src="https://imgur.com/iYGw4pW.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
-
-To fix this, we have to return to the Windows server (domain controller)  network interface in azure, go to the ipconfigurations and select ipconfig1, then proceed to change the private IP address allocation to static as shown below. <br/>
-
-<img src="https://imgur.com/ceHkmNp.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
-
-<img src="https://imgur.com/MVGXbW8.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
-
-<img src="https://imgur.com/JaNH1nN.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
-
-<img src="https://imgur.com/DmBnRPF.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
+<img src="https://res.cloudinary.com/dbglnqdha/image/upload/v1719343804/ss21_h7qurh.png" height="80%" width="80%" alt="GPO"/>
+<img src="https://res.cloudinary.com/dbglnqdha/image/upload/v1719343806/ss22_r2hrt1.png" height="80%" width="80%" alt="GPO"/>
+<img src="https://res.cloudinary.com/dbglnqdha/image/upload/v1719343807/ss23_wfk8fm.png" height="80%" width="80%" alt="GPO"/>
 
 <br />
 <br />
-After configuring the ip address allocation, proceed to the Virtual Network and select "AD-Vnet" DNS servers then change the server settings to custom and input the Windows server private ip address "172.16.0.5" as the DNS server and "162.63.129.16" as the alternate, click save and go back to the windows server and run the command "IPCONFIG /RENEW" and "IPCONFIG /ALL" to confirm the changes. Observe that the IP address of the Windows server and the DNS servers are now the same.
-<br/>
 
-<img src="https://imgur.com/1kDEmA8.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
+<h2>Creating Group Policy Objects</h2>
+<p>To create Group Policy Objects, we have to go to the server manager dashboard and select Group policy management, in group policy management we select our Domain which is DomainOS.com and drop down the folders under the domain, right click the organizational unit named “MarketingOS” and select the option “Create and link new GPO”. We then named the GPO “OUR GPO” as shown in the screenshots below. </p>
 
-<img src="https://imgur.com/zny1zaU.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
+<p>After creating the GPO, we right-click the GPO to edit the group policy object to redirect the documents folder to the redirect folder created in C drive and app restriction to prevent Notepad from running. </p>
 
-<img src="https://imgur.com/1Kl0oAk.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
+<p>To do folder redirection, we click on user configuration under GPO edit, select windows settings and select folder redirection, we right click on the documents folder and select properties, change the target setting to “Basic” and change the target folder location to “Create a folder for each user under root” before selecting the root path to the redirect folder created in the Windows C drive during Quota management, then click yes to the warning prompts and apply as shown in the highlighted screenshots below. </p>
+<p>The aim is to redirect every user back to "Redirect" folder wheneevr they select the documents folder on their computers.</p>
 
-<img src="https://imgur.com/ntDEr6T.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
-
-<br />
-<br />
-After configuring the windows server to share the same ip address with the DNS server, we then proceed to the Server manager dashboard, click on roles and features and click next till we get to server roles, here we click on Active directory domain services before clicking next and add features before proceeding with the installation setup, we then confirm the installation setup and wait for it to install, this will take a minute.  <br/>
-<img src="https://imgur.com/fZRXB7G.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
-
-<img src="https://imgur.com/HbGNyQL.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
-
-<img src="https://imgur.com/6DqDsNZ.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
-
-<img src="https://imgur.com/ha0ZpJl.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
-
-<img src="https://imgur.com/edEjYa3.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
-
-<img src="https://imgur.com/cnC4Hdd.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
-
-<img src="https://imgur.com/tqKv8hr.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
-
-<img src="https://imgur.com/3OI4eZm.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
-
-<img src="https://imgur.com/aCk3I0n.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
-
-<img src="https://imgur.com/KKqhbqV.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
+<img src="https://res.cloudinary.com/dbglnqdha/image/upload/v1719345503/msd_ihe7ln.png" height="80%" width="80%" alt="GPO"/>
+<img src="https://res.cloudinary.com/dbglnqdha/image/upload/v1719343809/SS24_rs4zsd.png" height="80%" width="80%" alt="GPO"/>
+<img src="https://res.cloudinary.com/dbglnqdha/image/upload/v1719343810/SS25_qgr8mv.png" height="80%" width="80%" alt="GPO"/>
+<img src="https://res.cloudinary.com/dbglnqdha/image/upload/v1719343812/ss26_k3juwi.png" height="80%" width="80%" alt="GPO"/>
+<img src="https://res.cloudinary.com/dbglnqdha/image/upload/v1719343814/ss27_t4ajwq.png" height="80%" width="80%" alt="GPO"/>
+<img src="https://res.cloudinary.com/dbglnqdha/image/upload/v1719343815/ss28_t9lamp.png" height="80%" width="80%" alt="GPO"/>
+<img src="https://res.cloudinary.com/dbglnqdha/image/upload/v1719343800/ss29_bcs1n3.png" height="80%" width="80%" alt="GPO"/>
+<img src="https://res.cloudinary.com/dbglnqdha/image/upload/v1719346540/msd2_fhatgx.png" height="80%" width="80%" alt="GPO"/>
+<img src="https://res.cloudinary.com/dbglnqdha/image/upload/v1719346537/msd3_gcy6sa.png" height="80%" width="80%" alt="GPO"/>
+<img src="https://res.cloudinary.com/dbglnqdha/image/upload/v1719346538/msd4_tthx5r.png" height="80%" width="80%" alt="GPO"/>
 
 <br />
 <br />
-After this installation, click on the amber alert flag on the server manager dashboard and promote the server to domain controller, the deployment configuration will show up, click on add new forest and generate a root domain name, this can be your organization name but for this demonstration "Sport.com", click next and generate an alternate backup password for directory service restore mode then click next and wait for Netbios to automatically generate name and proceed, click next to prerequisite checks and install, after installation, the Domain controller will restart and show "please wait for group policy client". 
-Note that you might have to restart the remote desktop protocol to gain access to the domain controller after restarting: <br/>
 
-<img src="https://imgur.com/8orlGZC.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
-
-<img src="https://imgur.com/5N7mlZV.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
-
-<img src="https://imgur.com/bZoiXjC.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
-
-<img src="https://imgur.com/WfzKeId.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
-
-<img src="https://imgur.com/n4mFj9A.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
-
-<img src="https://imgur.com/5Cma0Qs.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
-
-<img src="https://imgur.com/JNj7jIH.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
-
-<img src="https://imgur.com/Jvp23uY.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
-
-<img src="https://imgur.com/id5sjWp.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
-
-<img src="https://imgur.com/CbMYmUN.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
+<h2>App Restriction</h2>
+<p>To configure the app restriction, we have to go to User configuration under the created group policy object, select administrative template and select system, under system, we then proceed to click on “don’t run specified windows application” and then click on enable, select “list of disallowed application” and add “Notepad.exe” to select notepad and then click on Ok. This can be done for any application to prevent the user from using or running a particular application and in this case, we are restricting the notepad app.
+</p>
+<img src="https://res.cloudinary.com/dbglnqdha/image/upload/v1719347819/Picture1_bwy7aa.png" height="80%" width="80%" alt="GPO"/>
+<img src="https://res.cloudinary.com/dbglnqdha/image/upload/v1719347819/Picture2_emqqbj.png" height="80%" width="80%" alt="GPO"/>
 
 <br />
 <br />
-After logging in, run the command "whoami" to confirm AD-DS is active, you should get your netbiosname\administrator which is "Sport\azureuser" in this demonstration:  <br/>
-<img src="https://imgur.com/4RarkOV.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
 
-<br />
-<br />
-Create Azure windows 10 vm and set it up with the name Comp1 then login to the virtual machine with a remote desktop protocol using the public ip address, after logging in, proceed to system settings and click on rename this pc (advanced), click on change and switch from workgroup to domain and include the domain name which is "sport.com" in this demonstration, click on OK and enter the Domain controller(Active directory server) username and password to log in to the Active Directory, this should prompt the virtual machine to restart and show up in the Active directory users and computers on the Domain controller:  <br/>
-<img src="https://imgur.com/x8Qvbdq.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
+<h2>Testing Folder Redirection and Application Restriction</h2>
+<p>To test the folder redirection, we log in the windows 10 VM and first confirm that we can ping the domain controller(Windows server 2019) by running the command "Ipconfig 192.168.1.20" and giving the results as shown below. After confirming the domain controller can be reached, we then proceed to run the command ”gpupdate /force” to update the policy configured on the domain controller to the windows 10 client, running the command will ask for a yes or no confimation to log off the user as shown below. The user is logged off and logged back in as Marketing User. </p> 
+<img src="https://res.cloudinary.com/dbglnqdha/image/upload/v1719348750/Picture3_yg77hl.png" height="80%" width="80%" alt="GPO"/>
+<img src="https://res.cloudinary.com/dbglnqdha/image/upload/v1719348751/Picture4_vfinzr.png" height="80%" width="80%" alt="GPO"/>
+<img src="https://res.cloudinary.com/dbglnqdha/image/upload/v1719348752/Picture5_hcxugj.png" height="80%" width="80%" alt="GPO"/>
 
-<img src="https://imgur.com/ZObYGZk.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
+<p>After logging back in, we go to the file explorer, click on the documents folder properties and select the location tab to verify the redirection which shows in the location as highlighted below. We also confirmed the app restriction by trying to run the Notepad app multiple times which did not run and this confirms the app restriction using Group policy object was effective as shown in the screenshots below. </p>
+<img src="https://res.cloudinary.com/dbglnqdha/image/upload/v1719348953/Picture6_nie3rt.png" height="80%" width="80%" alt="GPO"/>
+<img src="https://res.cloudinary.com/dbglnqdha/image/upload/v1719348954/Picture7_dx6etb.png" height="80%" width="80%" alt="GPO"/>
 
-<img src="https://imgur.com/zcUtLAu.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
 
-<img src="https://imgur.com/BmkqJ6N.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
-
-<img src="https://imgur.com/R9zYMG5.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
-
-<img src="https://imgur.com/0hMOmke.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
-
-<img src="https://imgur.com/JsJtp4u.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
 
 <br />
 <br />
