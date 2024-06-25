@@ -1,8 +1,8 @@
-<h1>Creating Group Policy Objects and Shared Data Access</h1>
+<h1>Creating Group Policy Objects, Shared Data Access, App Restrictions and Remote Desktop Connection</h1>
 
 
 <h2>Description</h2>
-In this lab, we are going to walk through how to create Disk Quota management, Disabling Windows Services, Create Group policy Objects <abbr>(GPO)</abbr>, Shared data access, Organizational Units and Users and using GPOs to restrict applications . Configuring and running this lab on an Hyper-v windows 10 virtual machine will help develop your understanding of how active directory and GPOs work.
+In this lab, we are going to walk through how to create Disk Quota management, Disabling Windows Services, Creating shared folder, Creating Organizational unit and users, Create Group policy Objects <abbr>(GPO)</abbr>, using GPOs to restrict applications and Remote desktop connection. Configuring and running this lab will be done using virtual machines that are run on Hyper-v and this will help develop your understanding of how active directory and GPOs work.
 <br />
 
 
@@ -112,14 +112,20 @@ After disabling the services mentioned above, we opened task manager to monitor 
 <img src="https://res.cloudinary.com/dbglnqdha/image/upload/v1719348953/Picture6_nie3rt.png" height="80%" width="80%" alt="GPO"/>
 <img src="https://res.cloudinary.com/dbglnqdha/image/upload/v1719348954/Picture7_dx6etb.png" height="80%" width="80%" alt="GPO"/>
 
-
-
 <br />
 <br />
-Observe the Windows 10 VM named Comp1 has been added to the Active directory users and computers, and this can be done for other VMs deployed that needs to be added to the same Domain  <br/>
-<img src="https://imgur.com/JsJtp4u.png" height="80%" width="80%" alt="Active Directory Azure Homelab"/>
-</p>
 
+<h2>Remote Desktop Connection</h2>
+<p>To use remote desktop connection, we must first return to the windows server machine and enable remote desktop. To do this, we proceed to click on local server in the windows server manager dashboard and select remote desktop and enable it as shown in the screenshot below to enable remote access. </p>
+<img src="https://res.cloudinary.com/dbglnqdha/image/upload/v1719349991/Picture8_eem7aq.png" height="80%" width="80%" alt="GPO"/>
+
+<p>After remote desktop has been enabled on the windows server, we then proceed to log in on the windows 10 client, search for the remote desktop connection app and then input the Device name which is the device we want to have remote access to and that is the DC01OS as shown in the local server information under windows server manager dashboard and input the username which is “Administrator” and click connect to connect to the windows server 2019 remotely, as shown below and it was successful which is shown in the screenshots below.</p>
+<img src="https://res.cloudinary.com/dbglnqdha/image/upload/v1719350022/Picture9_ghi5xj.png" height="80%" width="80%" alt="GPO"/>
+<img src="https://res.cloudinary.com/dbglnqdha/image/upload/v1719350041/Picture10_ixjrr8.png" height="80%" width="80%" alt="GPO"/>
+<img src="https://res.cloudinary.com/dbglnqdha/image/upload/v1719350042/Picture11_z2ozn2.png" height="80%" width="80%" alt="GPO"/>
+<img src="https://res.cloudinary.com/dbglnqdha/image/upload/v1719350044/Picture12_qipsed.png" height="80%" width="80%" alt="GPO"/>
+
+<p>Observing the following steps and procedures above allows for us to create disk quota management, shared file access, create group policy objects, enforcing app restrictions, and remotely connect to the windows server 2019 domain controller using an RDP connection.</p>
 <!--
  ```diff
 - text in red
