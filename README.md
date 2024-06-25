@@ -2,7 +2,7 @@
 
 
 <h2>Description</h2>
-In this lab, we are going to walk through how to create Group policy Objects, Shared data access, Organizational Units and Users and using GPOs to restrict applications . Configuring and running this lab on an Hyper-v windows 10 virtual machine will help develop your understanding of how active directory and GPOs work.
+In this lab, we are going to walk through how to create Disk Quota management, Group policy Objects, Shared data access, Organizational Units and Users and using GPOs to restrict applications . Configuring and running this lab on an Hyper-v windows 10 virtual machine will help develop your understanding of how active directory and GPOs work.
 <br />
 
 
@@ -19,13 +19,13 @@ In this lab, we are going to walk through how to create Group policy Objects, Sh
 
 <p align="left">
 Create a resource group on Azure: To do this, it's important to create and name the resource group for all the resource to be grouped in, for this demonstration we're using Rgroup-demo. <br/>
-<img src="https://imgur.com/XAFCAx9.jpg" height="80%" width="80%" alt="Active Directory Azure homelab"/>
+<img src="https://res.cloudinary.com/dbglnqdha/image/upload/v1719337832/ss4_jogpn8.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
 <br />
 <br />
  Virtual network steps 1: Setting up a virtual network is important for setting up the Active directory domain server for later, setting up this virtual network allows us to configure our ip address and subnet reservation which could be useful for endpoints or vms trying to connect to the AD-DS server. <br/>
 <img src="https://imgur.com/7Auvz4Q.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
 <img src="https://imgur.com/7Auvz4Q.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
-<img src="![ss4](https://github.com/0xSp0rt/Creating-Group-Policy-Objects/assets/145977590/2535fe05-3133-40b0-8b0a-509335defd5d)" height="80%" width="80%" alt="GPO"/>
+<img src="C:\Users\samue\OneDrive\Desktop\Microsoft server admin\Server GPO\ss4.png" height="80%" width="80%" alt="GPO"/>
 
 
  
