@@ -43,12 +43,30 @@ After disabling the services mentioned above, we opened task manager to monitor 
 <h2>Creating a Shared Folder</h2>
 <p>We then proceed to the local c disk to create a folder called redirect, after creating the folder, we right click on the folder to check folder properties, under properties, we then select sharing tab and click on share, type everyone and click add to share the folder access with everyone and set user permission to read and write in the domain then click done and compress the Redirect folder as shown in the steps in the screenshots below.</p>
 <br />
-<br />
  
-
 <img src="https://res.cloudinary.com/dbglnqdha/image/upload/v1719338340/ss8_b4ymeb.png" height="80%" width="80%" alt="GPO"/>
 <img src="https://res.cloudinary.com/dbglnqdha/image/upload/ss9_n2zdvz.png" height="80%" width="80%" alt="GPO"/>
 <img src="https://res.cloudinary.com/dbglnqdha/image/upload/v1719338341/ss10_t9ciw3.png" height="80%" width="80%" alt="GPO"/>
+<img src="https://res.cloudinary.com/dbglnqdha/image/upload/v1719342178/ss11_u78xoh.png" height="80%" width="80%" alt="GPO"/>
+<img src="https://res.cloudinary.com/dbglnqdha/image/upload/v1719342168/ss12_bfjxri.png" height="80%" width="80%" alt="GPO"/>
+<img src="https://res.cloudinary.com/dbglnqdha/image/upload/v1719342168/ss13_mvvozn.png" height="80%" width="80%" alt="GPO"/>
+<img src="https://res.cloudinary.com/dbglnqdha/image/upload/v1719342169/ss14_xiryn7.png" height="80%" width="80%" alt="GPO"/>
+<img src="https://res.cloudinary.com/dbglnqdha/image/upload/v1719342171/ss15_ogrjpb.png" height="80%" width="80%" alt="GPO"/>
+<img src="https://res.cloudinary.com/dbglnqdha/image/upload/v1719342172/ss16_xv56e0.png" height="80%" width="80%" alt="GPO"/>
+
+<br />
+<br />
+
+<h2>Creating Organizational Unit and Users</h2>
+<p>We proceed to create Organizational unit and users in active directory, to do this, under windows server manager dashboard, we click on tools and select active directory users and computers as shown in the screenshot below. In Active directory users and computer, we select our Domain which is “DomainOS.com” and create a new organizational unit named MarketingOS as well as new users named “MarketingUserOS” with password “Secret555” as shown in the screenshots and highlighted.  </p>
+
+<img src="https://res.cloudinary.com/dbglnqdha/image/upload/ss17_ythhxq.png" height="80%" width="80%" alt="GPO"/>
+<img src="https://res.cloudinary.com/dbglnqdha/image/upload/ss18_yvwdwm.png" height="80%" width="80%" alt="GPO"/>
+<img src="https://res.cloudinary.com/dbglnqdha/image/upload/v1719342176/ss19_dl1dui.png" height="80%" width="80%" alt="GPO"/>
+<img src="https://res.cloudinary.com/dbglnqdha/image/upload/v1719342177/ss20_e5umda.png" height="80%" width="80%" alt="GPO"/>
+
+
+
  
  Virtual network steps 3: Configured the virtual network ip address to 172.16.0.0/16 and added a subnet configured with an ip address range of 172.16.0.0/24 <br/>
 <img src="https://imgur.com/8Sovenm.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
