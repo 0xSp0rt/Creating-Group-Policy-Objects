@@ -2,7 +2,7 @@
 
 
 <h2>Description</h2>
-In this lab, we are going to walk through how to create Group policy Objects, Shared data access, . Configuring and running this lab on an Azure windows 10 virtual machine will help develop your understanding of how active directory and azure virtual machines work, using a virtual machine makes it easier to run through this a couple of times which is highly recommended to help you build yours without using or needing a walkthrough. Let me know if you have any questions or anything is unclear.
+In this lab, we are going to walk through how to create Group policy Objects, Shared data access, Organizational Units and Users and using GPOs to restrict applications . Configuring and running this lab on an Hyper-v windows 10 virtual machine will help develop your understanding of how active directory and GPOs work.
 <br />
 
 
@@ -14,12 +14,8 @@ In this lab, we are going to walk through how to create Group policy Objects, Sh
 - <b>Remote Desktop Connection </b>
 
 
-<h2>Environments Used </h2>
-
-- <b>Windows 10 pro</b> 
-- <b>Windows server 2019 Datacenter</b>
-
 <h2>Program walk-through:</h2>
+
 
 <p align="left">
 Create a resource group on Azure: To do this, it's important to create and name the resource group for all the resource to be grouped in, for this demonstration we're using Rgroup-demo. <br/>
@@ -28,6 +24,10 @@ Create a resource group on Azure: To do this, it's important to create and name 
 <br />
  Virtual network steps 1: Setting up a virtual network is important for setting up the Active directory domain server for later, setting up this virtual network allows us to configure our ip address and subnet reservation which could be useful for endpoints or vms trying to connect to the AD-DS server. <br/>
 <img src="https://imgur.com/7Auvz4Q.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
+<img src="https://imgur.com/7Auvz4Q.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
+<img src="![ss4](https://github.com/0xSp0rt/Creating-Group-Policy-Objects/assets/145977590/2535fe05-3133-40b0-8b0a-509335defd5d)" height="80%" width="80%" alt="GPO"/>
+
+
  
  Virtual network steps 2: Created the virtual network under the Rgroup-demo resource group and named the virtual network "AD-Vnet" <br/>
 <img src="https://imgur.com/BqXGNfl.png" height="80%" width="80%" alt="Active Directory Azure homelab"/>
