@@ -58,7 +58,7 @@ After disabling the services mentioned above, we opened task manager to monitor 
 <br />
 
 <h2>Creating Organizational Unit and Users</h2>
-<p>We proceed to create Organizational unit and users in active directory, to do this, under windows server manager dashboard, we click on tools and select active directory users and computers as shown in the screenshot below. In Active directory users and computer, we select our Domain which is “DomainOS.com” and create a new organizational unit named MarketingOS as well as new users named “MarketingUserOS” with password “Secret555” as shown in the screenshots and highlighted.  </p>
+<p>We proceed to create Organizational unit and users in active directory, to do this, under windows server manager dashboard, we click on tools and select active directory users and computers as shown in the screenshot below. In Active directory users and computer, we select our Domain which is “DomainOS.com” and create a new organizational unit named MarketingOS as well as new users named “MarketingUserOS” with password “xxxxxx” as shown in the screenshots.  </p>
 
 <img src="https://res.cloudinary.com/dbglnqdha/image/upload/ss17_ythhxq.png" height="80%" width="80%" alt="GPO"/>
 <img src="https://res.cloudinary.com/dbglnqdha/image/upload/ss18_yvwdwm.png" height="80%" width="80%" alt="GPO"/>
